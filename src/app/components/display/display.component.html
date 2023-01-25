@@ -1,0 +1,26 @@
+<div class="container">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Task id</th>
+                <th>Task name</th>
+                <th>Description</th>
+                <th>Priority</th>
+                <th>Actions</th>
+                
+             
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let data of tasks"  >
+                <td>{{data.taskId}}</td>
+                <td>{{data.taskName}}</td>
+                <td>{{data.description}}</td>
+                <td>{{data.priority}}</td>
+                <td><button class="btn btn-primary" type="button" (click)="deleteFromTask(data.taskId)" >Delete</button></td>
+               
+            </tr>
+        </tbody>
+    </table>
+    <button routerLink="/adminboard" >Back</button>
+    </div>

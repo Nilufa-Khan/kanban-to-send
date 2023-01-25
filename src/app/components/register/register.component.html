@@ -1,0 +1,29 @@
+<h1 style="margin-top: 50px;"></h1>
+<div style="text-align: center" class="col-md-6 offset-md-3">
+<form (ngSubmit)="onSubmit()">
+    <div class="container text-center">
+        <img class="img-fluid" style="width: 200px;" src="../../../assets/images/Sign.png">
+    </div>
+    <br><br>
+    <div class="form-group">
+        <!-- <label>EmailID</label> -->
+        <input type="text" class="form-control" id="email" [(ngModel)]="task.email" name="email" placeholder="Enter your Mail ID">
+    </div>
+    <br>
+    <div class="form-group">
+        <!-- <label>Username</label> -->
+        <input type="text" class="form-control" id="OwnerName"
+         [(ngModel)]="task.username" name="userName" placeholder="Enter Username">
+    </div>
+    <br>
+    <div class="form-group">
+        <!-- <label>Password</label> -->
+        <input type="password" class="form-control" id="password"
+         [(ngModel)]="task.password" name="password" placeholder="Enter Your Password">
+    </div>
+    <br> 
+    <button class="btn btn-success" type="submit" >Signup</button>
+    <!-- <a routerLink="/login" mat-raised-button color="accent"style="margin-left:20px;">Login</a> -->
+ </form>
+</div>
+

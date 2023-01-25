@@ -1,0 +1,27 @@
+
+<div class="col-md-4 offset-md-4 mt-5" style="text-align: center;">
+    
+   
+    <form [formGroup]="loginFormGroup"  class="flex-container" (ngSubmit)="loginCheck()">
+    
+            <!-- <h2 class="headding2">Please Enter your Credentials to Login</h2> -->
+            <div class="container text-center">
+                <img class="img-fluid" style="width: 100px;" src="../../assets/images/login.png.png">
+            </div>
+
+            <div class="form-group">
+                <!-- <label style="margin-right: 15px;">Email </label> -->
+                <input type="email" class="form-control" formControlName="email" placeholder="Enter you email">
+            </div>
+            <br>
+            <div class="form-group">
+                <!-- <label style="margin-right: 15px;">Password </label> -->
+                <input type="password" class="form-control" formControlName="password" placeholder="Enter Your Password">
+            </div> 
+            <br>
+            <button class="btn btn-success" type="submit" [disabled]="loginFormGroup.invalid" value="Login" >Login </button>
+           
+
+    </form>
+
+</div>
