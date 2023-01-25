@@ -13,6 +13,7 @@ export class AdminServiceService {
   url3:string  = "http://localhost:8081/api/v2/alltask";
   url8:string  = "http://localhost:8081/api/v2/addtask";
 
+  
   url15:string  = "http://localhost:8081/api/v2/update";
   isLoggedin : boolean | any ;
   constructor(private httpclient:HttpClient) { }
