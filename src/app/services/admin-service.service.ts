@@ -22,11 +22,12 @@ export class AdminServiceService {
     return this.httpclient.post<any>(this.url,logindata);
   }
 
-  
+
   getAllTasks():Observable<Tasks[]>{
     return this.httpclient.get<Tasks[]>(this.url3);
    }
 
+   
 
  
   saveTask(task: Tasks):Observable<object>{
