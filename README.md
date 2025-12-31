@@ -1,74 +1,94 @@
-🚀 FlowBoard: A Full-Stack Kanban Productivity Tool 🚀
-A modern, full-stack Kanban board application designed to streamline project management and visualize workflow efficiency. This intuitive tool features interactive drag-and-drop functionality, real-time updates, and robust backend architecture.
+## Kanban Application
+
+This is a simple implementation of a Kanban Board, a tool that helps visualize and manage work. Originally it was first created in Toyota automotive, but nowadays it's widely used in software development.
+
+A Kanban Board is usually made of 3 columns - *TODO*, *InProgres*s & *Done*. In each column there are Post-it notes that represents task and their status.
+
+As already stated this project is an implementation of such board and made of 3 separate Docker containers that holds:
+
+- PostgreSQL database
+- Java backend (Spring Boot)
+- Angular frontend
+
+The entry point for a user is a website which is available under the address: **http://localhost:4200/**
+
+![Kanban](https://github.com/wkrzywiec/kanban-board/blob/master/assets/kanban.gif)
+
+---
+
+### Prerequisites
+
+In order to run this application you need to install two tools: **Docker** & **Docker Compose**.
+
+Instructions how to install **Docker** on [Ubuntu](https://docs.docker.com/install/linux/docker-ce/ubuntu/), [Windows](https://docs.docker.com/docker-for-windows/install/), [Mac](https://docs.docker.com/docker-for-mac/install/).
+
+**Docker Compose** is already included in installation packs for *Windows* and *Mac*, so only Ubuntu users needs to follow [this instructions](https://docs.docker.com/compose/install/).
+
+
+### How to run it?
+
+The entire application can be run with a single command on a terminal:
+
+```
+$ docker-compose up -d
+```
+
+If you want to stop it, use the following command:
+
+```
+$ docker-compose down
+```
+
+---
+
+#### kanban-postgres (Database)
+
+PostgreSQL database contains only single schema with two tables - kanban
+and task table.
+
+After running the app it can be accessible using these connectors:
+
+- Host: *localhost*
+- Database: *kanban*
+- User: *kanban*
+- Password: *kanban*
+
+
+Like other parts of application Postgres database is containerized and
+the definition of its Docker container can be found in
+*docker-compose.yml* file.
+
+```yml
+kanban-postgres:
+    image: "postgres:9.6-alpine"
+    container_name: kanban-postgres
+    volumes:
+      - kanban-data:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_DB:kanban
+      - POSTGRES_USER:kanban
+      - POSTGRES_PASSWORD:kanban
+```
+
+#### kanban-app (REST API)
+
+This is a Spring Boot (Java) based application that connects with a
+database that and expose the REST endpoints that can be consumed by
+frontend. It supports multiple HTTP REST methods like GET, POST, PUT and
+DELETE for two resources - kanban & task.
+
+
+This app is also put in Docker container and its definition can be found
+in a file *kanban-app/Dockerfile*. 
 
 
 
+#### kanban-ui (Frontend)
 
-________________________________________
-✨ Features
-FlowBoard provides a seamless way to manage tasks using a visual, card-based interface:
-•	🔄 Interactive Drag-and-Drop: Effortlessly move task cards between columns (e.g., To Do, In Progress, Done) using the Angular CDK.
-•	📅 Task Management & Reminders: Create, update, delete tasks; assign deadlines, priority levels, and automated reminders.
-•	📦 Archival System: Maintain a clean workspace by archiving completed boards and tasks while preserving historical data.
-•	🔐 User Authentication: Secure login and registration for personalized board management.
-•	📈 Agile Focused: Built on Kanban principles for maximum workflow efficiency and visualization.
-________________________________________
-💻 Technical Stack
-A robust, enterprise-grade technology stack powers this application:
-Front-end (Client Side)
-•	Framework: Angular
-•	Language: TypeScript
-•	Styling: HTML, CSS
-Back-end (Server Side)
-•	Language: Java
-•	Framework: Spring Boot
-•	API Testing: Postman
-Database & Other Tools
-•	Database: [Specify your database, e.g., PostgreSQL, MySQL, H2]
-•	Version Control: Git & GitHub
-________________________________________
-🚀 Getting Started
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
-Prerequisites
-•	JDK (Java Development Kit)
-•	Node.js & npm (Node Package Manager)
-•	[Database Name] (e.g., MySQL Server running locally)
-Installation (Backend)
-1.	Clone the repository:
-bash
-git clone github.com
-cd FlowBoard-Backend
-Use code with caution.
-2.	Configure Database: Update your database credentials in the application.properties file (or application.yml).
-3.	Run the application:
-Use your IDE (IntelliJ/Eclipse) or Maven/Gradle commands to run the main Spring Boot application file.
-Installation (Frontend)
-1.	Navigate to the frontend directory:
-bash
-cd ../FlowBoard-Frontend 
-# (Assuming frontend is in a separate repo/folder)
-Use code with caution.
-2.	Install dependencies:
-bash
-npm install
-Use code with caution.
-3.	Run the Angular server:
-bash
-ng serve --open
-Use code with caution.
-The application will be available in your browser at http://localhost:4200.
-________________________________________
-💡 Learnings & Development Focus
-This project demonstrated expertise in building highly interactive, data-driven applications:
-•	Full-Stack Integration: Seamlessly integrating a responsive Angular front-end with a scalable Spring Boot REST API.
-•	State Management: Managing complex application state as tasks move across the board without full page reloads.
-•	RESTful Design: Building robust, well-documented API endpoints that handle CRUD operations efficiently.
-________________________________________
-🤝 Contributing
-We welcome contributions! If you have suggestions or bug reports, please open an issue or submit a pull request.
-________________________________________
-📄 License
-This project is licensed under the MIT License.
-________________________________________
-Built with Modern Tech | © 2025 Nilufa Khan
+This is a real endpoint for a user where they can manipulate their
+kanbans and tasks. It consumes the REST API endpoints provided by
+*kanban-app*.
 
+It can be entered using link: **http://localhost:4200/**
