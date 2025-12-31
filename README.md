@@ -12,7 +12,8 @@ As already stated this project is an implementation of such board and made of 3 
 
 The entry point for a user is a website which is available under the address: **http://localhost:4200/**
 
-![Kanban](https://github.com/wkrzywiec/kanban-board/blob/master/assets/kanban.gif)
+![Image](https://github.com/user-attachments/assets/22bf5b34-abb6-44df-8417-35b30b648bd9)
+<!-- Uploading "kanban.gif"... -->
 
 ---
 
